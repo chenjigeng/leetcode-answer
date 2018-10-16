@@ -6,9 +6,10 @@
  * 两个排序数组的中位数
  */
 var findMedianSortedArrays = function(nums1, nums2) {
-  const targetIndex = Math.ceil((nums1.length + nums2.length) / 2) - 1;
+  const targetIndex = Math.ceil((nums1.length + nums2.length) / 2) - 1; // 目标索引位置
   const odd = (nums1.length + nums2.length) % 2 === 1;
   let nums1Index = 0, nums2Index = 0, index = 0;
+  // 循环找到对应的位置
   while (index++ < targetIndex) {
     if (nums1Index === nums1.length) {
       nums2Index++;
