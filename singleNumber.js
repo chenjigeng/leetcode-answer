@@ -5,11 +5,10 @@
  * @return {number}
  */
 var singleNumber = function(nums) {
-  let num = 0;
-  for (let i = 0; i < nums.length; i++) {
-    num ^= nums[i];
+  for (let i = 1; i < nums.length; i++) {
+    nums[0] ^= nums[i];
   }
-  return num;
+  return nums[0];
 };
 
-console.log(singleNumber([2, 2, 1]));
+console.log(singleNumber([2, 2, 1, 4, 4, 5, 5, 1, 8]));
