@@ -10,4 +10,4 @@ var countBits = function(num) {
   return results;
 };
 
-console.log( countBits(4));
+// console.log( countBits(4));
