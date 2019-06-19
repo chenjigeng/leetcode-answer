@@ -1,5 +1,5 @@
 function bitset(nums, num) {
-  const length = 32 * 100000 / 32;
+  const length = Math.pow(2, 32) / 32;
   const arr = Array.from({ length }).map(() => 0);
   for (let i = 0; i < nums.length; i++) {
     const slotNum = Math.floor(nums[i] / 32);
