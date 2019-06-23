@@ -53,3 +53,20 @@ const root = {
 }
 
 console.log(maxDepth(root));
+
+// /**
+//  * Definition for a binary tree node.
+//  * function TreeNode(val) {
+//  *     this.val = val;
+//  *     this.left = this.right = null;
+//  * }
+//  */
+// /**
+//  * @param {TreeNode} root
+//  * @return {number}
+//  */
+// var maxDepth = function(root) {
+//   if (!root) return 0;
+//   const leftDepth = maxDepth(root.left) + 1, rightDepth = maxDepth(root.right) + 1;
+//   return leftDepth > rightDepth ? leftDepth : rightDepth;
+// };

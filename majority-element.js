@@ -3,14 +3,21 @@
  * @return {number}
  */
 var majorityElement = function(nums) {
-  const num = Math.floor(nums.length / 2);
-  const map = {};
-  for (let i = 0; i < nums.length; i++) {
-    map[nums[i]] = map[nums[i]] ? map[nums[i]] + 1 : 1;
-    if (map[nums[i]] > num) {
-      return nums[i];
+  let major = nums[0], count = 1;
+  for (let i = 1; i < nums.length; i++) {
+    if (nums[i] !== major) {
+      if (count === 0) {
+        major = nums[i];
+        count = 1;
+      } else {
+        count--;
+      }
+    } else {
+      count++;
     }
   }
+
+  return major;
 };
 
-console.log((majorityElement([3,2,3])));
+// console.log((majorityElement([3,2,3])));
