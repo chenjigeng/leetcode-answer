@@ -4,4 +4,4 @@ function narcissistic( value ) {
 }
 
 
-console.log(narcissistic( 23603 ));
+console.log(narcissistic( 23603 ))
