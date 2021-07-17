@@ -4,71 +4,40 @@
  * @return {boolean}
  */
 var isMatch = function (s, p) {
-  const map = {};
+  const dp = [];
 
-  /**
-   *
-   * @param {string} s
-   * @param {string} p
-   */
-  function backTracking(s, p) {
-    let key = s + "$" + p;
-    if (map[key] !== undefined) {
-      return map[key];
+  for (let i = 0; i <= s.length; i++) {
+    dp[i] = [];
+
+    for (let j = 0; j <= p.length; j++) {
+      dp[i][j] = false;
     }
-    if (p.length === 0 && s.length > 0) {
-      map[key] = false;
-      return false;
-    }
-    if (s.length === 0) {
-      if (p.length === 0) {
-        map[key] = true;
-
-        return true;
-      }
-
-      if (p.length % 2 === 0) {
-        for (let j = 1; j < p.length; j += 2) {
-          if (p[j] !== "*") {
-            map[key] = false;
-
-            return false;
-          }
-        }
-        map[key] = true;
-
-        return true;
-      } else {
-        map[key] = false;
-
-        return false;
-      }
-    }
-    if (s[0] === p[0] || p[0] === ".") {
-      if (p[1] === "*") {
-        map[key] =
-          backTracking(s.slice(1), p.slice(2)) ||
-          backTracking(s.slice(1), p) ||
-          backTracking(s, p.slice(2));
-
-        return map[key];
-      }
-
-      map[key] = backTracking(s.slice(1), p.slice(1));
-      return map[key];
-    }
-
-    if (p[1] === "*") {
-      map[key] = backTracking(s, p.slice(2));
-      return map[key];
-    }
-
-    map[key] = false;
-
-    return false;
   }
 
-  return backTracking(s, p);
+  dp[0][0] = true;
+
+  for (let i = 0; i < p.length; i++) {
+    if (p[i] === "*") {
+      dp[0][i + 1] = dp[0][i - 1];
+    }
+  }
+
+  for (let i = 0; i < s.length; i++) {
+    for (let j = 0; j < p.length; j++) {
+      if (s[i] === p[j] || p[j] === ".") {
+        dp[i + 1][j + 1] = dp[i][j];
+      } else if (p[j] === "*") {
+        dp[i + 1][j + 1] = dp[i + 1][j - 1];
+        if (s[i] === p[j - 1] || p[j - 1] === ".") {
+          dp[i + 1][j + 1] = dp[i + 1][j + 1] || dp[i][j + 1];
+        }
+      }
+    }
+  }
+
+  // console.log(dp);
+
+  return dp[s.length][p.length];
 };
 
 // console.log(isMatch("aa", "a"));

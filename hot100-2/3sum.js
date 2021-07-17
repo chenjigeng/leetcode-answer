@@ -4,55 +4,40 @@
  */
 var threeSum = function (nums) {
   nums.sort((a, b) => a - b);
-
   const result = [];
 
-  if (nums[nums.length - 1] > 0) {
-    return [];
-  }
+  for (let i = 0; i < nums.length; i++) {
+    let left = i + 1,
+      right = nums.length - 1;
 
-  // console.log(nums);
+    while (left < right) {
+      if (nums[left] + nums[right] + nums[i] === 0) {
+        result.push([nums[i], nums[left], nums[right]]);
 
-  for (let i = 0; i < nums.length - 2; ) {
-    if (nums[i] > 0) break;
-    for (let j = i + 1; j < nums.length - 1; ) {
-      if (nums[i] + nums[j] > 0) {
-        break;
-      }
-
-      let target = -(nums[i] + nums[j]);
-
-      for (let k = j + 1; k < nums.length; ) {
-        if (target === nums[k]) {
-          result.push([nums[i], nums[j], nums[k]]);
-
-          k++;
-
-          while (nums[k] === nums[k - 1]) {
-            k++;
-          }
-        } else {
-          k++;
+        while (nums[left] === nums[left + 1]) {
+          left++;
         }
-      }
 
-      j++;
+        while (nums[right] === nums[right - 1]) {
+          right--;
+        }
 
-      while (nums[j] === nums[j - 1]) {
-        j++;
+        left++;
+        right--;
+      } else if (nums[left] + nums[right] + nums[i] > 0) {
+        right--;
+      } else {
+        left++;
       }
     }
 
-    i++;
-
-    while (nums[i] === nums[i - 1]) {
+    while (nums[i] === nums[i + 1]) {
       i++;
     }
   }
 
-  // console.log(result);
-
   return result;
 };
 
-// threeSum([-1, 0, 1, 2, -1, -4]);
+// console.log(threeSum([1, -1, -1, 0]));
+// console.log(threeSum([-1, 0, 1, 2, -1, -4]));

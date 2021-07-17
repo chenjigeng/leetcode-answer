@@ -1,24 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <style>
-    div {
-      width: 200px;
-      height: 200px;
-      background-color: aqua;
-    }
-  </style>
-</head>
-<body>
-  <div></div>
-  <script type="text/javascript">
-    setTimeout(() => {
-      document.querySelector('div').style.backgroundColor = 'red'
-    }, 4000)
-  </script>
-</body>
-</html>
+<p>...content before scripts...</p>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => alert('DOM ready!'));
+</script>
+
+<script
+  async
+  src="https://javascript.info/article/script-async-defer/long.js"
+></script>
+<script
+  async
+  src="https://javascript.info/article/script-async-defer/small.js"
+></script>
+
+<p>...content after scripts...</p>
