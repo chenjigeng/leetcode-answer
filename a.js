@@ -1,7 +1,7 @@
-const fs = require("fs");
+const fs = require('fs');
 
-const file = fs.createReadStream("bitset.js");
-const output = fs.createWriteStream("newBitset.js");
+const file = fs.createReadStream('bitset.js');
+const output = fs.createWriteStream('newBitset.js');
 
 const pipe = function () {};
 
@@ -10,22 +10,22 @@ const pipe = function () {};
  * @param {fs.WriteStream} dest
  */
 file.newPipe = function (dest) {
-  this.on("data", (chunk) => {
+  this.on('data', (chunk) => {
     const result = dest.write(chunk);
     console.log(chunk, result);
 
     if (!result) {
-      console.log("pause");
+      console.log('pause');
       this.pause();
     }
   });
 
-  this.on("end", () => {
-    console.log("end");
+  this.on('end', () => {
+    console.log('end');
     dest.end();
   });
 
-  dest.on("drain", () => {
+  dest.on('drain', () => {
     this.resume();
   });
 };

@@ -16,8 +16,8 @@ var minWindow = function (s, t) {
 
   const currentMap = {};
 
-  let currentStr = "";
-  let minStr = "";
+  let currentStr = '';
+  let minStr = '';
 
   for (let i = 0; i < s.length; i++) {
     if (!currentMap[s[i]]) {

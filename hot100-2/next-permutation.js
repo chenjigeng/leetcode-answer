@@ -16,7 +16,7 @@ var nextPermutation = function (nums) {
       for (let j = i + 1; j < nums.length; j++) {
         nums[j] = newArr[j - i - 1];
       }
-      console.log("nums", nums);
+      console.log('nums', nums);
       return;
     }
   }

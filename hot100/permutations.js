@@ -2,15 +2,15 @@
  * @param {number[]} nums
  * @return {number[][]}
  */
-var permute = function(nums) {
+var permute = function (nums) {
     return helper(nums, 0, []);
 };
 
 /**
- * 
- * @param {number[]} nums 
- * @param {number} index 
- * @param {number[][]} result 
+ *
+ * @param {number[]} nums
+ * @param {number} index
+ * @param {number[][]} result
  */
 function helper(nums, index, result) {
     if (index === nums.length) {
@@ -31,4 +31,5 @@ function swap(nums, i, j) {
     [nums[i], nums[j]] = [nums[j], nums[i]];
 }
 
+console.log(permute([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]));
 // console.log(permute([1,2,3]));
